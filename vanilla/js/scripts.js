@@ -32,6 +32,7 @@ async function setLocale(newLocale) {
   locale = newLocale;
   translations = newTranslations;
   document.documentElement.lang = newLocale;
+  document.documentElement.dir = dir(newLocale);
 
   translatePage();
 }
@@ -69,6 +70,10 @@ function isSupported(locale) {
 // array, or return our default locale
 function supportedOrDefault(locales) {
   return locales.find(isSupported) || defaultLocale;
+}
+
+function dir(locale) {
+  return locale === "ar" ? "rtl" : "ltr";
 }
 
 function bindLocaleSwitcher(initialValue) {
