@@ -1,6 +1,6 @@
 {
   "app-title": "My Appy Apperson",
-  "lead": "Welcome to my little spot on the interwebs!",
+  "lead": "Welcome to my little spot on the interwebs, {username}!",
   "home": "Home",
   "about": "About"
 }

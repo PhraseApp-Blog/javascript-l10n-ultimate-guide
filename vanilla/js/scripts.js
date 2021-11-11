@@ -59,7 +59,27 @@ function translatePage() {
 function translate(element) {
   const key = element.getAttribute("data-i18n-key");
   const translation = translations[key];
-  element.innerText = translation;
+
+  const options = JSON.parse(
+    element.getAttribute("data-i18n-opt"),
+  );
+
+  element.innerText = options
+    ? interpolate(translation, options)
+    : translation;
+}
+
+// Convert a message like "Hello, {name}" to "Hello, Chad"
+// where the given interpolations object is {name: "Chad"}
+function interpolate(message, interpolations) {
+  return Object.keys(interpolations).reduce(
+    (interpolated, key) =>
+      interpolated.replace(
+        new RegExp(`{\s*${key}\s*}`, "g"),
+        interpolations[key],
+      ),
+    message,
+  );
 }
 
 function isSupported(locale) {
