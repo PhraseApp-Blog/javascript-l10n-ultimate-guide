@@ -1,6 +1,8 @@
 // The locale our app first shows
 const defaultLocale = "en";
 
+const supportedLocales = ["en", "ar"];
+
 // The active locale
 let locale;
 
@@ -9,10 +11,13 @@ let translations = {};
 
 // When the page content is ready...
 document.addEventListener("DOMContentLoaded", () => {
-  // Translate the page to the default locale
-  setLocale(defaultLocale);
+  const initialLocale = supportedOrDefault(
+    browserLocales(true),
+  );
 
-  bindLocaleSwitcher(defaultLocale);
+  setLocale(initialLocale);
+
+  bindLocaleSwitcher(initialLocale);
 });
 
 // Load translations for the given locale and translate
@@ -56,6 +61,16 @@ function translate(element) {
   element.innerText = translation;
 }
 
+function isSupported(locale) {
+  return supportedLocales.indexOf(locale) > -1;
+}
+
+// Retrieve the first locale we support from the given
+// array, or return our default locale
+function supportedOrDefault(locales) {
+  return locales.find(isSupported) || defaultLocale;
+}
+
 function bindLocaleSwitcher(initialValue) {
   const switcher = document.querySelector(
     "[data-i18n-switcher]",
@@ -66,4 +81,17 @@ function bindLocaleSwitcher(initialValue) {
   switcher.onchange = (e) => {
     setLocale(e.target.value);
   };
+}
+
+/**
+ * Retrieve user-preferred locales from browser
+ *
+ * @param {boolean} languageCodeOnly - when true, returns
+ * ["en", "fr"] instead of ["en-US", "fr-FR"]
+ * @returns array | undefined
+ */
+function browserLocales(languageCodeOnly = false) {
+  return navigator.languages.map((locale) =>
+    languageCodeOnly ? locale.split("-")[0] : locale,
+  );
 }
