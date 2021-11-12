@@ -66,7 +66,16 @@ function translateElement(element) {
 }
 
 function translate(key, interpolations = {}) {
-  return interpolate(translations[key], interpolations);
+  const message = translations[key];
+
+  if (key.endsWith("-plural")) {
+    return interpolate(
+      pluralFormFor(message, interpolations.count),
+      interpolations,
+    );
+  }
+
+  return interpolate(message, interpolations);
 }
 
 // Convert a message like "Hello, {name}" to "Hello, Chad"
@@ -80,6 +89,22 @@ function interpolate(message, interpolations) {
       ),
     message,
   );
+}
+
+/*
+  Given a forms object like
+  {
+    "zero": "No articles",
+    "one": "One article",
+    "other": "{count} articles"
+  } and a count of 1, returns "One article"
+*/
+function pluralFormFor(forms, count) {
+  const matchingForm = new Intl.PluralRules(locale).select(
+    count,
+  );
+
+  return forms[matchingForm];
 }
 
 function isSupported(locale) {

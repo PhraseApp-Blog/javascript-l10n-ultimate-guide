@@ -2,5 +2,9 @@
   "app-title": "My Appy Apperson",
   "lead": "Welcome to my little spot on the interwebs, {username}!",
   "home": "Home",
-  "about": "About"
+  "about": "About",
+  "article-plural": {
+    "one": "{count} article and counting",
+    "other": "{count} articles and counting"
+  }
 }
