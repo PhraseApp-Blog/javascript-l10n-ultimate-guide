@@ -8,6 +8,7 @@
     "one": "مقال {count}",
     "two": "مقالان",
     "few": "{count} مقالات",
-    "many": "{count} مقال"
+    "many": "{count} مقال",
+    "other": "{count} مقال"
   }
 }
