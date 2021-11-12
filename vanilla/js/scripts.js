@@ -50,23 +50,23 @@ async function fetchTranslationsFor(newLocale) {
 function translatePage() {
   document
     .querySelectorAll("[data-i18n-key]")
-    .forEach(translate);
+    .forEach((el) => translateElement(el));
 }
 
 // Replace the inner text of the given HTML element
 // with the translation in the active locale,
 // corresponding to the element's data-i18n-key
-function translate(element) {
+function translateElement(element) {
   const key = element.getAttribute("data-i18n-key");
-  const translation = translations[key];
 
-  const options = JSON.parse(
-    element.getAttribute("data-i18n-opt"),
-  );
+  const options =
+    JSON.parse(element.getAttribute("data-i18n-opt")) || {};
 
-  element.innerText = options
-    ? interpolate(translation, options)
-    : translation;
+  element.innerText = translate(key, options);
+}
+
+function translate(key, interpolations = {}) {
+  return interpolate(translations[key], interpolations);
 }
 
 // Convert a message like "Hello, {name}" to "Hello, Chad"
