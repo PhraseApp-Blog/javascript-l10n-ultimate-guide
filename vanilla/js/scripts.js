@@ -122,6 +122,15 @@ function formatNumber(value) {
   }
 }
 
+/*
+  Given a value object like
+  {
+    "date": "2021-12-05 15:29:00",
+    "dateStyle": "long",
+    "timeStyle": "short"
+  } and that the current locale is en,
+  returns "December 5, 2021 at 3:29 PM"
+*/
 function formatDate(value) {
   if (typeof value === "object" && value.date) {
     const { date, ...options } = value;
