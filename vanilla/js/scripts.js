@@ -88,7 +88,9 @@ function translate(key, interpolations = {}) {
 function interpolate(message, interpolations) {
   return Object.keys(interpolations).reduce(
     (interpolated, key) => {
-      const value = formatNumber(interpolations[key]);
+      const value = formatDate(
+        formatNumber(interpolations[key]),
+      );
 
       return interpolated.replace(
         new RegExp(`{\s*${key}\s*}`, "g"),
@@ -115,6 +117,22 @@ function formatNumber(value) {
       fullyQualifiedLocaleDefaults[locale],
       options,
     ).format(number);
+  } else {
+    return value;
+  }
+}
+
+function formatDate(value) {
+  if (typeof value === "object" && value.date) {
+    const { date, ...options } = value;
+
+    const parsedDate =
+      typeof date === "string" ? Date.parse(date) : date;
+
+    return new Intl.DateTimeFormat(
+      fullyQualifiedLocaleDefaults[locale],
+      options,
+    ).format(parsedDate);
   } else {
     return value;
   }

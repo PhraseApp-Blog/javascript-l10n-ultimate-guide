@@ -7,5 +7,6 @@
     "one": "{count} article and counting",
     "other": "{count} articles and counting"
   },
-  "nyan-cat-price": "Nyan Cat (Official) NFT: {price}"
+  "nyan-cat-price": "Nyan Cat (Official) NFT: {price}",
+  "publish-date": "Published on {publishDate}"
 }

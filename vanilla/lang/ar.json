@@ -11,5 +11,6 @@
     "many": "{count} مقال",
     "other": "{count} مقال"
   },
-  "nyan-cat-price": "نيان كات NFT: {price}"
+  "nyan-cat-price": "نيان كات NFT: {price}",
+  "publish-date": "نشر في {publishDate}"
 }
