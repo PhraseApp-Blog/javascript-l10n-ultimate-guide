@@ -3,6 +3,11 @@ const defaultLocale = "en";
 
 const supportedLocales = ["en", "ar"];
 
+const fullyQualifiedLocaleDefaults = {
+  en: "en-US",
+  ar: "ar-EG",
+};
+
 // The active locale
 let locale;
 
@@ -82,13 +87,37 @@ function translate(key, interpolations = {}) {
 // where the given interpolations object is {name: "Chad"}
 function interpolate(message, interpolations) {
   return Object.keys(interpolations).reduce(
-    (interpolated, key) =>
-      interpolated.replace(
+    (interpolated, key) => {
+      const value = formatNumber(interpolations[key]);
+
+      return interpolated.replace(
         new RegExp(`{\s*${key}\s*}`, "g"),
-        interpolations[key],
-      ),
+        value,
+      );
+    },
     message,
   );
+}
+
+/*
+  Given a value object like
+  {
+    "number" : 300000,
+    "style": "currency",
+    "currency": "EUR"
+  } and that the current locale is en, returns "€300,000.00"
+*/
+function formatNumber(value) {
+  if (typeof value === "object" && value.number) {
+    const { number, ...options } = value;
+
+    return new Intl.NumberFormat(
+      fullyQualifiedLocaleDefaults[locale],
+      options,
+    ).format(number);
+  } else {
+    return value;
+  }
 }
 
 /*

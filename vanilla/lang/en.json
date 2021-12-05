@@ -6,5 +6,6 @@
   "article-plural": {
     "one": "{count} article and counting",
     "other": "{count} articles and counting"
-  }
+  },
+  "nyan-cat-price": "Nyan Cat (Official) NFT: {price}"
 }
