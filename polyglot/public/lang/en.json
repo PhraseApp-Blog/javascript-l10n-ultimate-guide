@@ -2,5 +2,6 @@
   "app-title": "With Polyglot",
   "home": "Home",
   "about": "About",
-  "lead": "Welcome to my little spot on the interwebs, %{username}!"
+  "lead": "Welcome to my little spot on the interwebs, %{username}!",
+  "new-messages": "You have %{smart_count} new message |||| You have %{smart_count} new messages"
 }

@@ -36,6 +36,7 @@ function translatePage() {
 async function loadAndTranslate(locale) {
   const translations = await loadTranslations(locale);
 
+  polyglot.locale(locale);
   polyglot.replace(translations);
 
   document.documentElement.lang = locale;
