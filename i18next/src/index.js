@@ -1,30 +1,29 @@
 import i18next from "i18next";
+import HttpApi from "i18next-http-backend";
 
-i18next.init({
-  lng: "ar",
-  debug: true,
-  resources: {
-    en: {
-      translation: {
-        "app-title": "With Polyglot",
-        home: "Home",
-        about: "About",
-      },
+async function initI18next() {
+  await i18next.use(HttpApi).init({
+    lng: "en",
+    debug: true,
+    fallbackLng: false,
+    backend: {
+      loadPath: "/lang/{{lng}}.json",
     },
-    ar: {
-      translation: {
-        "app-title": "مع بوليجلوت",
-        home: "الرئيسية",
-        about: "نبذة عنا",
-      },
-    },
-  },
-});
+  });
+}
 
-const translatableElements = document.querySelectorAll(
-  "[data-i18n-key]",
-);
-translatableElements.forEach((el) => {
-  const key = el.getAttribute("data-i18n-key");
-  el.innerHTML = i18next.t(key);
-});
+function translatePageElements() {
+  const translatableElements = document.querySelectorAll(
+    "[data-i18n-key]",
+  );
+  translatableElements.forEach((el) => {
+    const key = el.getAttribute("data-i18n-key");
+    el.innerHTML = i18next.t(key);
+  });
+}
+
+// Init
+(async function () {
+  await initI18next();
+  translatePageElements();
+})();
