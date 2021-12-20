@@ -27,8 +27,23 @@ function translatePageElements() {
   });
 }
 
+function bindLocaleSwitcher(initialValue) {
+  const switcher = document.querySelector(
+    "[data-i18n-switcher]",
+  );
+
+  switcher.value = initialValue;
+
+  switcher.onchange = (e) => {
+    i18next
+      .changeLanguage(e.target.value)
+      .then(translatePageElements);
+  };
+}
+
 // Init
 (async function () {
   await initI18next();
   translatePageElements();
+  bindLocaleSwitcher(i18next.resolvedLanguage);
 })();
