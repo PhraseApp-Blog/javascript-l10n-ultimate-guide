@@ -49,6 +49,11 @@ function bindLocaleSwitcher(initialValue) {
 
 // Init
 (async function () {
+  i18next.on("languageChanged", (newLanguage) => {
+    document.documentElement.lang = newLanguage;
+    document.documentElement.dir = i18next.dir(newLanguage);
+  });
+
   await initI18next();
   translatePageElements();
   bindLocaleSwitcher(i18next.resolvedLanguage);
