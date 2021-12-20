@@ -3,9 +3,10 @@ import HttpApi from "i18next-http-backend";
 
 async function initI18next() {
   await i18next.use(HttpApi).init({
-    lng: "en",
+    lng: "ar",
     debug: true,
-    fallbackLng: false,
+    supportedLngs: ["en", "ar"],
+    fallbackLng: "en",
     backend: {
       loadPath: "/lang/{{lng}}.json",
     },
