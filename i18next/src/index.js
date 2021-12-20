@@ -23,7 +23,13 @@ function translatePageElements() {
   );
   translatableElements.forEach((el) => {
     const key = el.getAttribute("data-i18n-key");
-    el.innerHTML = i18next.t(key);
+
+    const interpolations = el.getAttribute("data-i18n-opt");
+    const parsedInterpolations = interpolations
+      ? JSON.parse(interpolations)
+      : {};
+
+    el.innerHTML = i18next.t(key, parsedInterpolations);
   });
 }
 

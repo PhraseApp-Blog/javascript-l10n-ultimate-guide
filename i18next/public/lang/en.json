@@ -1,5 +1,6 @@
 {
   "app-title": "With i18next",
   "home": "Home",
-  "about": "About"
+  "about": "About",
+  "lead": "Welcome to my little spot on the interwebs, {{username}}!"
 }
