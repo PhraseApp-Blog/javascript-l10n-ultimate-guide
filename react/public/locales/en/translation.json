@@ -2,6 +2,7 @@
   "app-title": "With React",
   "home": "Home",
   "about": "About",
+  "translation-icon": "Translation icon",
   "lead": "Welcome to my little spot on the interwebs, {{username}}!",
   "new-messages_one": "You have {{count}} new message",
   "new-messages_other": "You have {{count}} new messages"

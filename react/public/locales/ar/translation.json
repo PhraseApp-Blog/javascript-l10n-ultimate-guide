@@ -2,6 +2,7 @@
   "app-title": "مع ريأكت",
   "home": "الرئيسية",
   "about": "نبذة عنا",
+  "translation-icon": "رمز الترجمة",
   "lead": "أهلاً بك في مكاني الصغير على النت يا {{username}}.",
   "new-messages_zero": "لا توجد لديك رسائل جديدة",
   "new-messages_one": "لديك رسالة جديدة",

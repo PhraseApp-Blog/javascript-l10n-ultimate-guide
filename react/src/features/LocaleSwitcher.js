@@ -1,13 +1,13 @@
 import { useTranslation } from "react-i18next";
 
 function LocaleSwitcher() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <>
       <img
         src="img/translation-icon@2x.png"
-        alt="Translation icon"
+        alt={t("translation-icon")}
         className="translation-icon"
       />
 
