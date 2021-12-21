@@ -12,7 +12,7 @@ dependencies.
 You will need a web server on your local machine to run
 this app.
 
-#### Using your code editor
+### Using your code editor
 
 If you're using Visual Studio Code, something like
 the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
