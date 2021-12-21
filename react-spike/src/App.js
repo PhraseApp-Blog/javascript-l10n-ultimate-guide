@@ -11,10 +11,8 @@ function App() {
 
       <h1>{t("app-title")}</h1>
 
-      <p>
-        Welcome to my little spot on the interwebs, user
-      </p>
-      <p>You have count new messages</p>
+      <p>{t("lead", { username: "Samus" })}</p>
+      <p>{t("new-messages", { count: 12 })}</p>
     </div>
   );
 }
