@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./lib/skeleton/normalize.css";
 import "./lib/skeleton/skeleton.css";
+import "./services/i18n";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 

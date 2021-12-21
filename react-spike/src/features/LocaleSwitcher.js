@@ -3,6 +3,7 @@ function LocaleSwitcher() {
     <>
       <img
         src="img/translation-icon@2x.png"
+        alt="Translation icon"
         className="translation-icon"
       />
 
