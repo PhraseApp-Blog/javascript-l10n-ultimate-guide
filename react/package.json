@@ -1,6 +1,6 @@
 {
-  "name": "react-spike",
-  "version": "0.1.0",
+  "name": "react-demo",
+  "version": "0.0.1",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
@@ -20,6 +20,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "author": "Phrase / Memsource GmbH",
+  "license": "MIT",
   "eslintConfig": {
     "extends": [
       "react-app",
