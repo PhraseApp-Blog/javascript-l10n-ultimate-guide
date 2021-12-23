@@ -3,8 +3,6 @@ const path = require("path");
 const port = 3000;
 const openBrowser = true;
 
-console.log("path", path.resolve(__dirname, "public"));
-
 module.exports = {
   entry: {
     app: ["./src/index.js"],
