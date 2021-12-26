@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/lib/skeleton/normalize.css">
+  <link rel="stylesheet" href="css/lib/skeleton/skeleton.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>jQuery i18n</title>
+</head>
+
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <div class="container">
+        <ul class="navbar-list navbar-start">
+          <li class="navbar-item">
+            <a href="#" data-i18n="home" class="navbar-link">
+              Home
+            </a>
+          </li>
+          <li class="navbar-item">
+            <a href="#" data-i18n="about" class="navbar-link">
+              About
+            </a>
+          </li>
+        </ul>
+        <div class="navbar-end">
+          <img src="img/translation-icon@2x.png" class="translation-icon" />
+
+          <select data-i18n-switcher class="locale-switcher">
+            <option value="en">English</option>
+            <option value="ar">Arabic (العربية)</option>
+          </select>
+        </div>
+      </div>
+    </nav>
+
+    <h1 data-i18n="app-title">jQuery i18n</h1>
+    <p data-i18n="lead" data-i18n-opt='{"username": "Zelda"}'>
+      Welcome to my little spot on the interwebs, {{username}}!
+    </p>
+    <p data-i18n="new-messages" data-i18n-opt='{"count": 12}'>
+      You have {{count}} new messages
+    </p>
+  </div>
+  <script src="./js/lib/jquery-3.6.0.min.js"></script>
+  <script src="./js/lib/i18next.min.js"></script>
+  <script src="./js/lib/jquery-i18next.min.js"></script>
+  <script src="./js/scripts.js"></script>
+</body>
+</html>
