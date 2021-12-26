@@ -1,0 +1,8 @@
+{
+  "app-title": "With jQuery + i18next",
+  "home": "Home",
+  "about": "About",
+  "lead": "Welcome to my little spot on the interwebs, {{username}}!",
+  "new-messages_one": "You have {{count}} new message",
+  "new-messages_other": "You have {{count}} new messages"
+}
