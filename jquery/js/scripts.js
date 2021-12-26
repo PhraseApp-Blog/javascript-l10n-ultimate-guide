@@ -1,19 +1,16 @@
-i18next.init({
-  lng: "en",
-  resources: {
-    en: {
-      translation: {
-        "app-title": "Hello jQuery + i18next"
-      }
-    },
-    ar: {
-      translation: {
-        "app-title": "أهلاً جي كويري"
-      }
-    }
-  }
-});
+async function initI18n() {
+  await i18next.use(i18nextHttpBackend).init({
+    lng: "en"
+  });
 
-jqueryI18next.init(i18next, $);
+  jqueryI18next.init(i18next, $);
+}
 
-$('body').localize();
+function translatePageElements() {
+  $('body').localize();
+}
+
+(async function () {
+  await initI18n();
+  translatePageElements();
+}());
