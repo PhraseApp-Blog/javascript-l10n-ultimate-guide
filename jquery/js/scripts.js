@@ -1,9 +1,9 @@
 async function initI18n() {
   await i18next.use(i18nextHttpBackend).init({
-    lng: "en",
+    lng: "ar",
   });
 
-  jqueryI18next.init(i18next, $);
+  jqueryI18next.init(i18next, $, { useOptionsAttr: true });
 }
 
 function translatePage() {
