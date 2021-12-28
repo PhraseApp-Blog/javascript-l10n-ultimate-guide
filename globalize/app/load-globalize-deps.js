@@ -1,3 +1,8 @@
+const mainLocaleDataUrlTpl =
+  "lib/cldr-json/cldr-localenames-full/main/{locale}/languages.json";
+const supplementalUrlTpl =
+  "/lib/cldr-json/cldr-core/supplemental/{feature}.json";
+
 async function loadMainLocaleData(locales) {
   return fetchJsonFromUrlTemplate(
     mainLocaleDataUrlTpl,

@@ -1,12 +1,10 @@
-const mainLocaleDataUrlTpl =
-  "lib/cldr-json/cldr-localenames-full/main/{locale}/languages.json";
-const supplementalUrlTpl =
-  "/lib/cldr-json/cldr-core/supplemental/{feature}.json";
-const messageUrlTpl = "/lang/{locale}.json";
-
-const defaultLocale = "en";
+const defaultLocale = "ar";
 const supportedLocales = ["en", "ar"];
-const requiredSupplementals = ["likelySubtags"];
+const requiredSupplementals = [
+  "likelySubtags",
+  "plurals",
+  "ordinals",
+];
 
 (async function () {
   await initI18n({

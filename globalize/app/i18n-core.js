@@ -1,12 +1,20 @@
+const messageUrlTpl = "/lang/{locale}.json";
+
 async function initI18n(opt) {
+  const {
+    supportedLocales,
+    requiredSupplementals,
+    defaultLocale,
+  } = opt;
+
   Globalize.load(
-    await loadMainLocaleData(opt.supportedLocales)
+    await loadMainLocaleData(supportedLocales)
   );
   Globalize.load(
-    await loadSupplementals(opt.requiredSupplementals)
+    await loadSupplementals(requiredSupplementals)
   );
 
-  loadLocaleAndTranslatePage(opt.defaultLocale);
+  loadLocaleAndTranslatePage(defaultLocale);
 }
 
 async function loadLocaleAndTranslatePage(locale) {
