@@ -4,7 +4,7 @@ const supplementalUrlTpl =
   "/lib/cldr-json/cldr-core/supplemental/{feature}.json";
 const messageUrlTpl = "/lang/{locale}.json";
 
-const defaultLocale = "ar";
+const defaultLocale = "en";
 const supportedLocales = ["en", "ar"];
 const requiredSupplementals = ["likelySubtags"];
 
