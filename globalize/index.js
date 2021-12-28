@@ -1,32 +1,30 @@
-// /lib/cldr-json/cldr-core/supplemental/likelySubtags.json
-// lib/cldr-json/cldr-localenames-full/main/en/languages.json
+const mainLocaleDataUrlTpl =
+  "lib/cldr-json/cldr-localenames-full/main/{locale}/languages.json";
+const supplementalUrlTpl =
+  "/lib/cldr-json/cldr-core/supplemental/{feature}.json";
+const messageUrlTpl = "/lang/{locale}.json";
+
+const defaultLocale = "en";
+const supportedLocales = ["en", "ar"];
+const requiredSupplementals = ["likelySubtags"];
+
 (async function () {
-  const languagesData = await fetch(
-    "lib/cldr-json/cldr-localenames-full/main/en/languages.json"
+  Globalize.load(
+    await loadMainLocaleData(supportedLocales)
   );
-  const languagesJson = await languagesData.json();
-  Globalize.load(languagesJson);
-
-  const likelySubtagData = await fetch(
-    "/lib/cldr-json/cldr-core/supplemental/likelySubtags.json"
+  Globalize.load(
+    await loadSupplementals(requiredSupplementals)
   );
-  const likelySubtagJson = await likelySubtagData.json();
-  Globalize.load(likelySubtagJson);
+  Globalize.loadMessages(
+    await loadMessagesFor(messageUrlTpl, defaultLocale)
+  );
 
-  Globalize.loadMessages({
-    en: {
-      like: [
-        "{0, plural, offset:1",
-        "     =0 {Be the first to like this}",
-        "     =1 {You liked this}",
-        "    one {You and someone else liked this}",
-        "  other {You and # others liked this}",
-        "}",
-      ],
-    },
-  });
+  const globalize = Globalize(defaultLocale);
 
-  document.querySelector(
-    '[data-i18n-key="app-title"'
-  ).innerHTML = Globalize("en").messageFormatter("like")(1);
+  document
+    .querySelectorAll("[data-i18n-key]")
+    .forEach((element) => {
+      const key = element.getAttribute("data-i18n-key");
+      element.innerHTML = globalize.formatMessage(key);
+    });
 })();
