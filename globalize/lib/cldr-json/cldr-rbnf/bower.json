@@ -1,0 +1,10 @@
+{
+  "name": "cldr-rbnf",
+  "version": "40.0.0",
+  "main": "rbnf/*.json",
+  "ignore": [
+    ".gitattributes",
+    "README.md"
+  ],
+  "license": "Unicode-DFS-2016"
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/lib/skeleton/normalize.css">
+  <link rel="stylesheet" href="css/lib/skeleton/skeleton.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>i18next i18n</title>
+</head>
+
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <div class="container">
+        <ul class="navbar-list navbar-start">
+          <li class="navbar-item">
+            <a href="#" data-i18n-key="home" class="navbar-link">
+              Home
+            </a>
+          </li>
+          <li class="navbar-item">
+            <a href="#" data-i18n-key="about" class="navbar-link">
+              About
+            </a>
+          </li>
+        </ul>
+        <div class="navbar-end">
+          <img src="img/translation-icon@2x.png" class="translation-icon" />
+
+          <select data-i18n-switcher class="locale-switcher">
+            <option value="en">English</option>
+            <option value="ar">Arabic (العربية)</option>
+          </select>
+        </div>
+      </div>
+    </nav>
+
+    <h1 data-i18n-key="app-title">With Globalize</h1>
+    <p data-i18n-key="lead" data-i18n-opt='{"username": "Zelda"}'>
+      Welcome to my little spot on the interwebs, {{username}}!
+    </p>
+    <p data-i18n-key="new-messages" data-i18n-opt='{"count": 12}'>
+      You have {{count}} new messages
+    </p>
+  </div>
+
+  <script src="./lib/cldrjs/dist/cldr.js"></script>
+  <script src="./lib/cldrjs/dist/cldr/event.js"></script>
+  <script src="./lib/cldrjs/dist/cldr/supplemental.js"></script>
+  <script src="./lib/globalize/dist/globalize.js"></script>
+  <script src="./lib/globalize/dist/globalize/message.js"></script>
+  <script src="./index.js"></script>
+</body>
+</html>
