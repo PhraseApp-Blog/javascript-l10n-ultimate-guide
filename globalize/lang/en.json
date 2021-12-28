@@ -3,7 +3,7 @@
     "app-title": "With Globalize",
     "home": "Home",
     "about": "About",
-    "lead": "Welcome to my little spot on the interwebs, username!",
-    "new-messages": "You have count new messages"
+    "lead": "Welcome to my little spot on the interwebs, {username}!",
+    "new-messages": "You have {formattedCount} new messages"
   }
 }

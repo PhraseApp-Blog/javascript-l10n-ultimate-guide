@@ -23,7 +23,17 @@ function translatePageElements() {
     .querySelectorAll("[data-i18n-key]")
     .forEach((element) => {
       const key = element.getAttribute("data-i18n-key");
-      element.innerHTML = Globalize.formatMessage(key);
+
+      const interpolations =
+        element.getAttribute("data-i18n-opt");
+      const parsedInterpolations = interpolations
+        ? JSON.parse(interpolations)
+        : {};
+
+      element.innerHTML = Globalize.formatMessage(
+        key,
+        parsedInterpolations
+      );
     });
 }
 
