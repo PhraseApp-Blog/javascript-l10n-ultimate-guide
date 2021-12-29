@@ -39,12 +39,25 @@ function translatePageElements() {
   });
 }
 
+function bindLocaleSwitcher(initialValue) {
+  const switcher = document.querySelector(
+    "[data-i18n-switcher]"
+  );
+
+  switcher.value = initialValue;
+
+  switcher.onchange = (e) => {
+    setLocale(e.target.value);
+  };
+}
+
 (async function () {
   const likelySubtags = await fetchJson(
     "/lib/cldr-json/cldr-core/supplemental/likelySubtags.json"
   );
-
   Globalize.load(likelySubtags);
 
-  setLocale(defaultLocale);
+  await setLocale(defaultLocale);
+
+  bindLocaleSwitcher(defaultLocale);
 })();
