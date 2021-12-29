@@ -1,4 +1,4 @@
-const defaultLocale = "ar";
+const defaultLocale = "en";
 const supportedLocales = ["en", "ar"];
 const requiredSupplementals = [
   "likelySubtags",
@@ -7,11 +7,7 @@ const requiredSupplementals = [
 ];
 
 (async function () {
-  await initI18n({
-    supportedLocales,
-    requiredSupplementals,
-    defaultLocale,
-  });
+  await initI18n(requiredSupplementals, defaultLocale);
 
   initLocaleSwitcher(defaultLocale);
 })();
