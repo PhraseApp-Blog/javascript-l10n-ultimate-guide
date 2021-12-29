@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/lib/skeleton/normalize.css">
   <link rel="stylesheet" href="css/lib/skeleton/skeleton.css">
   <link rel="stylesheet" href="css/styles.css">
-  <title>Globalize i18n</title>
+  <title>i18next i18n</title>
 </head>
 
 <body>
@@ -39,12 +39,24 @@
     </nav>
 
     <h1 data-i18n-key="app-title">With Globalize</h1>
-    <p data-i18n-key="lead" data-i18n-opt='{"username": "Stella"}'>
+    <p data-i18n-key="lead" data-i18n-opt='{"username": "Zelda"}'>
       Welcome to my little spot on the interwebs, {username}!
     </p>
     <p data-i18n-key="new-messages" data-i18n-opt='{"count": 100}'>
       You have # new messages
     </p>
   </div>
+
+  <script src="./lib/cldrjs/dist/cldr.js"></script>
+  <script src="./lib/cldrjs/dist/cldr/event.js"></script>
+  <script src="./lib/cldrjs/dist/cldr/supplemental.js"></script>
+  <script src="./lib/globalize/dist/globalize.js"></script>
+  <script src="./lib/globalize/dist/globalize/message.js"></script>
+  <script src="./lib/globalize/dist/globalize/plural.js"></script>
+
+  <script src="./app/load-globalize-deps.js"></script>
+  <script src="./app/i18n-core.js"></script>
+  <script src="./app/locale-switcher.js"></script>
+  <script src="./index.js"></script>
 </body>
 </html>

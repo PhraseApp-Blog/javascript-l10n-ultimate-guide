@@ -1,0 +1,14 @@
+{
+  "en": {
+    "app-title": "With Globalize",
+    "home": "Home",
+    "about": "About",
+    "lead": "Welcome to my little spot on the interwebs, {username}!",
+    "new-messages": [
+      "You have {count, plural,",
+      "    one {# new message}",
+      "  other {# new messages}",
+      "}"
+    ]
+  }
+}
