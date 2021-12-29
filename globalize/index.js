@@ -1,4 +1,9 @@
-const defaultLocale = "en";
+const defaultLocale = "ar";
+const supplementals = [
+  "likelySubtags",
+  "plurals",
+  "ordinals",
+];
 
 async function fetchJson(url) {
   const response = await fetch(url);
@@ -61,10 +66,17 @@ function bindLocaleSwitcher(initialValue) {
 }
 
 (async function () {
-  const likelySubtags = await fetchJson(
-    "/lib/cldr-json/cldr-core/supplemental/likelySubtags.json"
-  );
-  Globalize.load(likelySubtags);
+  await Promise.all(
+    supplementals.map((supplemental) =>
+      fetchJson(
+        `/lib/cldr-json/cldr-core/supplemental/${supplemental}.json`
+      )
+    )
+  ).then((downloadedSupplementals) => {
+    downloadedSupplementals.forEach((ds) =>
+      Globalize.load(ds)
+    );
+  });
 
   await setLocale(defaultLocale);
 
