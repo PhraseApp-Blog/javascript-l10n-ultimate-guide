@@ -3,6 +3,26 @@ async function fetchJson(url) {
   return await response.json();
 }
 
+function translatePageElements() {
+  const elements = document.querySelectorAll(
+    "[data-i18n-key]"
+  );
+
+  elements.forEach((element) => {
+    const key = element.getAttribute("data-i18n-key");
+
+    try {
+      element.innerHTML = Globalize.formatMessage(key);
+    } catch (error) {
+      if (error.code === "E_MISSING_MESSAGE") {
+        console.warn(error.message);
+      } else {
+        console.error(error);
+      }
+    }
+  });
+}
+
 (async function () {
   const likelySubtags = await fetchJson(
     "/lib/cldr-json/cldr-core/supplemental/likelySubtags.json"
@@ -21,7 +41,5 @@ async function fetchJson(url) {
 
   Globalize.locale("en");
 
-  document.querySelector(
-    "[data-i18n-key='app-title']"
-  ).textContent = Globalize.formatMessage("app-title");
+  translatePageElements();
 })();
