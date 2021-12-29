@@ -90,17 +90,19 @@ async function fetchJson(url) {
 }
 
 function mainUrlsFor(options, locale) {
-  const mainUrls = [];
+  const result = [];
+
   options.forEach((main) => {
     Object.keys(main).forEach((key) => {
       main[key].forEach((collection) => {
-        mainUrls.push(
+        result.push(
           `/lib/cldr-json/cldr-${key}-full/main/${locale}/${collection}.json`
         );
       });
     });
   });
-  return mainUrls;
+
+  return result;
 }
 
 function supplementalUrlsFor(options) {
