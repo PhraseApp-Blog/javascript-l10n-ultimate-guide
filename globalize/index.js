@@ -1,6 +1,22 @@
+const defaultLocale = "en";
+
 async function fetchJson(url) {
   const response = await fetch(url);
   return await response.json();
+}
+
+async function setLocale(locale) {
+  const messages = await fetchJson(`/lang/${locale}.json`);
+  Globalize.loadMessages(messages);
+  Globalize.locale(locale);
+  setDocumentAttrs(locale);
+  translatePageElements();
+}
+
+function setDocumentAttrs(locale) {
+  document.documentElement.lang = locale;
+  document.documentElement.dir =
+    locale === "ar" ? "rtl" : "ltr";
 }
 
 function translatePageElements() {
@@ -30,16 +46,5 @@ function translatePageElements() {
 
   Globalize.load(likelySubtags);
 
-  Globalize.loadMessages({
-    en: {
-      "app-title": "Hello Globalize!",
-    },
-    ar: {
-      "app-title": "أهلاً جلوبالايز",
-    },
-  });
-
-  Globalize.locale("en");
-
-  translatePageElements();
+  setLocale(defaultLocale);
 })();
