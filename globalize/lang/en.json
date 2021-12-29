@@ -2,6 +2,7 @@
   "en": {
     "app-title": "With Globalize",
     "home": "Home",
-    "about": "About"
+    "about": "About",
+    "lead": "Welcome to my little spot on the interwebs, {username}!"
   }
 }

@@ -27,8 +27,17 @@ function translatePageElements() {
   elements.forEach((element) => {
     const key = element.getAttribute("data-i18n-key");
 
+    const interpolations =
+      element.getAttribute("data-i18n-opt");
+    const parsedInterpolations = interpolations
+      ? JSON.parse(interpolations)
+      : {};
+
     try {
-      element.innerHTML = Globalize.formatMessage(key);
+      element.innerHTML = Globalize.formatMessage(
+        key,
+        parsedInterpolations
+      );
     } catch (error) {
       if (error.code === "E_MISSING_MESSAGE") {
         console.warn(error.message);
