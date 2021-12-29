@@ -1,21 +1,26 @@
 const defaultLocale = "ar";
+const mains = [
+  {
+    localenames: ["languages"],
+  },
+];
 const supplementals = [
   "likelySubtags",
   "plurals",
   "ordinals",
 ];
 
-async function fetchJson(url) {
-  const response = await fetch(url);
-  return await response.json();
-}
-
 async function setLocale(locale) {
   const messages = await fetchJson(`/lang/${locale}.json`);
   Globalize.loadMessages(messages);
+
+  await loadIntoGlobalize(mainUrlsFor(mains, locale));
+
   Globalize.locale(locale);
+
   setDocumentAttrs(locale);
   translatePageElements();
+  setLocaleSwitcherDisplayNames();
 }
 
 function setDocumentAttrs(locale) {
@@ -65,18 +70,58 @@ function bindLocaleSwitcher(initialValue) {
   };
 }
 
-(async function () {
-  await Promise.all(
-    supplementals.map((supplemental) =>
-      fetchJson(
-        `/lib/cldr-json/cldr-core/supplemental/${supplemental}.json`
-      )
-    )
-  ).then((downloadedSupplementals) => {
-    downloadedSupplementals.forEach((ds) =>
-      Globalize.load(ds)
+function setLocaleSwitcherDisplayNames() {
+  const options = document.querySelectorAll(
+    "[data-i18n-switcher] option"
+  );
+
+  options.forEach((option) => {
+    const localeCode = option.value;
+
+    option.textContent = Globalize.cldr.main(
+      `localeDisplayNames/languages/${localeCode}`
     );
   });
+}
+
+async function fetchJson(url) {
+  const response = await fetch(url);
+  return await response.json();
+}
+
+function mainUrlsFor(options, locale) {
+  const mainUrls = [];
+  options.forEach((main) => {
+    Object.keys(main).forEach((key) => {
+      main[key].forEach((collection) => {
+        mainUrls.push(
+          `/lib/cldr-json/cldr-${key}-full/main/${locale}/${collection}.json`
+        );
+      });
+    });
+  });
+  return mainUrls;
+}
+
+function supplementalUrlsFor(options) {
+  return options.map(
+    (feature) =>
+      `/lib/cldr-json/cldr-core/supplemental/${feature}.json`
+  );
+}
+
+async function loadIntoGlobalize(featureUrls) {
+  await Promise.all(
+    featureUrls.map((url) => fetchJson(url))
+  ).then((downloaded) =>
+    downloaded.forEach((feature) => Globalize.load(feature))
+  );
+}
+
+(async function () {
+  await loadIntoGlobalize(
+    supplementalUrlsFor(supplementals)
+  );
 
   await setLocale(defaultLocale);
 
