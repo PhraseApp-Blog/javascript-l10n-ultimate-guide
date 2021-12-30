@@ -1,4 +1,4 @@
-const defaultLocale = "ar";
+const defaultLocale = "en";
 const mains = {
   localenames: ["languages"],
 };
@@ -56,12 +56,12 @@ function translatePageElements() {
   });
 }
 
-function bindLocaleSwitcher(initialValue) {
+function bindLocaleSwitcher() {
   const switcher = document.querySelector(
     "[data-i18n-switcher]"
   );
 
-  switcher.value = initialValue;
+  switcher.value = Globalize.locale().locale;
 
   switcher.onchange = (e) => {
     setLocale(e.target.value);
