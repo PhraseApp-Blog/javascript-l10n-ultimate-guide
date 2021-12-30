@@ -1,0 +1,13 @@
+{
+  "name": "cldr-misc-full",
+  "version": "40.0.0",
+  "dependencies": {
+    "cldr-core": "40.0.0"
+  },
+  "main": "main/**/*.json",
+  "ignore": [
+    ".gitattributes",
+    "README.md"
+  ],
+  "license": "Unicode-DFS-2016"
+}
