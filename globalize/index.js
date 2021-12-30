@@ -49,6 +49,7 @@ function translatePageElements() {
     } catch (error) {
       if (error.code === "E_MISSING_MESSAGE") {
         console.warn(error.message);
+        element.innerHTML = key;
       } else {
         console.error(error);
       }
