@@ -3,7 +3,6 @@ Here you'll find all the code we covered in our article, _The Ultimate Guide to 
 
 Each directory corresponds to an aricle section:
 
-Subheader/section — directory
 - How do I localize a web page with JavaScript? ➞ [vallina](https://github.com/PhraseApp-Blog/javascript-l10n-ultimate-guide/tree/main/vanilla)
 - How do I localize a web page with Polyglot? ➞ [polyglot](https://github.com/PhraseApp-Blog/javascript-l10n-ultimate-guide/tree/main/polyglot)
 - How do I localize a web page with i18next? ➞ [i18next](https://github.com/PhraseApp-Blog/javascript-l10n-ultimate-guide/tree/main/i18next)
