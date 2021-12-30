@@ -1,9 +1,7 @@
 const defaultLocale = "ar";
-const mains = [
-  {
-    localenames: ["languages"],
-  },
-];
+const mains = {
+  localenames: ["languages"],
+};
 const supplementals = [
   "likelySubtags",
   "plurals",
@@ -92,13 +90,11 @@ async function fetchJson(url) {
 function mainUrlsFor(options, locale) {
   const result = [];
 
-  options.forEach((main) => {
-    Object.keys(main).forEach((key) => {
-      main[key].forEach((collection) => {
-        result.push(
-          `/lib/cldr-json/cldr-${key}-full/main/${locale}/${collection}.json`
-        );
-      });
+  Object.keys(options).forEach((key) => {
+    options[key].forEach((collection) => {
+      result.push(
+        `/lib/cldr-json/cldr-${key}-full/main/${locale}/${collection}.json`
+      );
     });
   });
 
