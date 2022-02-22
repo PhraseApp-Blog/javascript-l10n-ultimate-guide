@@ -1,7 +1,7 @@
 # Companion Demo Code to The Ultimate Guide to JavaScript Localization
 Here you'll find all the code we covered in our article, _The Ultimate Guide to JavaScript Localization_.
 
-Each directory corresponds to an aricle section:
+Each directory corresponds to an article section:
 
 - How do I localize a web page with JavaScript? ➞ [vallina](https://github.com/PhraseApp-Blog/javascript-l10n-ultimate-guide/tree/main/vanilla)
 - How do I localize a web page with Polyglot? ➞ [polyglot](https://github.com/PhraseApp-Blog/javascript-l10n-ultimate-guide/tree/main/polyglot)
